@@ -17,12 +17,15 @@ summary  {
     cursor: pointer;
 }
 
-.top {
-    background-color: blue
+.nav-container, .pagination, .toolbar {
+    display: none !important;
+}
+.doc {    
+    max-width: 70rem !important;
 }
 
-.bottom {
-    background-color: green!important
+.underline {
+    cursor: pointer;
 }
 
 </style>
