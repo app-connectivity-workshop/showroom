@@ -1,9 +1,7 @@
 ++++
 
 <style> 
-.doc {
-    max-width: 70rem;
-} 
+
 
 .underline {
   cursor: pointer;
@@ -17,16 +15,10 @@ summary  {
     cursor: pointer;
 }
 
-.nav-container, .pagination, .toolbar {
+.nav-container, .toolbar {
     display: none !important;
 }
-.doc {    
-    max-width: 70rem !important;
-}
 
-.underline {
-    cursor: pointer;
-}
 
 </style>
 
