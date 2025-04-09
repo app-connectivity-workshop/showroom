@@ -22,7 +22,7 @@ ssh -o ServerAliveInterval=60 -o ServerAliveCountMax=60 lab-user@{rhel_hostname}
 
 . Ignore the *Failed to add the host to the list of known hosts (/data/.ssh/known_hosts).* message
 
-. Enter your password `{rhel_ssh_password}` when prompted and press Enter.
+. Enter your password `{rhel_ssh_password}` when prompted and press *Enter*.
 
 You should now be logged into the RHEL machine. Let's see how we can set up a link between the database and the OpenShift cluster.
 +
