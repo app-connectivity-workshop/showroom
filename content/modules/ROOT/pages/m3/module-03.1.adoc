@@ -82,7 +82,7 @@ image:m3/gw-dns-policy-created.png[]
 +
 [NOTE]
 ====
-* The message displayed against the `Enforced` is to notify you that there are no HTTP routes attached yet. This will change once a developer creates an HTTPRoute
+* The message displayed against the `Enforced` is to notify you that there are no HTTPRoute custom resources (CRs) attached yet. This will change once a developer creates an HTTPRoute
 * This DNS Policy has been pre-created because DNS resolution for new DNS records may take a few minutes.
 ====
 . A DNSPolicy creates an appropriate DNSRecord created on the DNS provider, AWS Route53, in this case. +
