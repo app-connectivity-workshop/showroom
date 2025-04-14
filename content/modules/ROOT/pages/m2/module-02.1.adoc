@@ -3,14 +3,9 @@ include::../style.adoc[]
 
 == Activity: Enable OpenShift Service Mesh 
 
-{rhossm} have been installed and configured in your cluster. 
-In this section, you will make changes to the *travel-agency* namespace so the travel portal can take full advantage of {rhossm} by enabling Istio sidecar proxy injection.
+{rhossm} have been installed and configured in your cluster. You will now onboard `travel-agency` namespace to be managed by {rhossm}
 
-By default, {rhossm} has visibility into all namespaces in the cluster. However, to actively manage Istio policies between services, we need to explicitly inject the service mesh sidecar proxies by setting annotations on the namespace resource. This can be done manually by editing/patching labels in the `travel-agency` namespace, or by using the Kiali console, which is the method we will use in the lab module.
-
-Once the application is part of the service mesh, you can also use the Red Hat-provided Kiali Operator to visualize service traffic and gain observability into your application.
-
-== Set up your workshop environment
+=== Set up your workshop environment
 
 You will need to access the OpenShift console and command line terminals to apply configurations.
 
@@ -49,9 +44,11 @@ oc login -u admin -p {ocp_cluster_openshift_cluster_admin_password} https://172.
 // ```
 
 
-== Enable Service Mesh for the `travel-agency` namespace
+== Review `travel-agency` namespace
 
-. Before enabling Istio sidecar proxy injection for the `travel-agency` namespace, let's review all the pods running within it. Run the following command in the *upper terminal*.
+Before enabling Istio sidecar proxy injection for the `travel-agency` namespace, let's review all the pods running within it. 
+
+. Run the following command in the *upper terminal*.
 +
 [source,sh,role="execute",subs=attributes+]
 ----
@@ -79,30 +76,37 @@ oc describe namespaces travel-agency
 image:m2/oc-travel-agency.png[] 
 
 . Look for the label: `istio-injection=disabled`
-
-. Even though the mesh manages the namespace, sidecars have not yet been deployed. Let's change that by updating the label to `istio-injection=enabled`.
 +
 [NOTE]
 ====
 The `istio-injection=disabled` label is the implicit default value and might always be present in the deployment. You can proceed to the next step even if it is not displayed.
 ====
 
-*Enabling Auto-Injection Using Kiali*
+. The Istio sidecars have not yet been deployed and the namespace has not been added to the mesh yet. Let's change that in the next step.
 
-Kiali is part of Red Hat OpenShift Service Mesh and is an observability console for Istio that helps you monitor the structure and health of your service mesh. It displays traffic flow, service relationships, and errors.
+== Add `travel-agency` namespace to the mesh
 
-image:m2/kiali-overview.png[]
+Onboarding a namespace to the mesh can be done manually by editing/patching labels in the `travel-agency` namespace, or by using the Kiali console.  
 
-. Navigate to http://kiali-istio-system.{ocp_cluster_openshift_cluster_ingress_domain}[Kiali console, window="kiali"], , and log in with username `admin` and password `{ocp_cluster_openshift_cluster_admin_password}` when prompted.
+In this module, you will use the Kiali consle to enable automatic Istio injection to the namespace. Service mesh will then automatically inject proxy sidecar containers into all pods in `travel-agency` namespace that will allow the service mesh to take manage them.
 
+. Navigate to http://kiali-istio-system.{ocp_cluster_openshift_cluster_ingress_domain}/?namespace=travel-agency&opLabel=or[Kiali console, window="kiali"], and log in with username `admin` and password `{ocp_cluster_openshift_cluster_admin_password}` when prompted.
+. You should automatically see a filtered view of the `travel-agency` namespace. If not, enter `travel-agency`  into the *Namespace* filter, and press *Enter* to make it easier to perform actions.
++
+image:m2/namespace-filter.png[] 
 
-. In Kiali, go to the *Overview* tab, find the `travel-agency` tile, click the kabob menu (three dots), and choose *Enable Auto Injection*.
+. From the `travel-agency` tile, click the kebab menu (three horizontal dots), and choose *Enable Auto Injection*.
 +
 image:m2/kiali-enable-injection.png[]
 . Confirm by clicking the *Enable* button.
 +
 image:m2/kiali-enable-injection-button.png[]
-. Let's look at the `travel-agency` namespace to verify the update:
+. This action adds `travel-agency` namespace to the mesh, and also set the namespace's Istio label to `istio-injection=enabled`
+
+=== Validate auto-injection to `travel-agency`
+
+Let's  another look at the `travel-agency` namespace to verify the update
+. From the *upper terminal*, execute the following command once more.
 +
 [source,sh,role="execute",subs=attributes+]
 ----
@@ -110,24 +114,22 @@ oc describe namespaces travel-agency
 ----
 +
 Example output:
++
 ```
 oc describe namespaces travel-agency
 Name:         travel-agency
 Labels:       app.kubernetes.io/instance=travel-agency
               istio-injection=enabled
               kubernetes.io/metadata.name=travel-agency
-              pod-security.kubernetes.io/audit=restricted
-              pod-security.kubernetes.io/audit-version=latest
-              pod-security.kubernetes.io/warn=restricted
+              ....
               pod-security.kubernetes.io/warn-version=latest
 Annotations:  openshift.io/sa.scc.mcs: s0:c29,c19
-              openshift.io/sa.scc.supplemental-groups: 1000850000/10000
-              openshift.io/sa.scc.uid-range: 1000850000/10000
+              ....
 Status:       Active
 ...
 
 ```
-. You should now see: `istio-injection=enabled`
+. You should now see: `istio-injection=enabled`. 
 +
 [.concept]
 .What does the istio-injection=enabled do?

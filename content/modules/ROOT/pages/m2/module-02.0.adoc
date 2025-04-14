@@ -10,25 +10,25 @@ include::../style.adoc[]
 NOTE: Canary deployment is a strategy where a new version (the canary) is tested before all of the old instances are replaced
 
 
-{rhossm} based on the open source https://istio.io/[Istio project^],  provides {corp} a uniform way to connect, manage, observe, and provide security for their microservices-based applications. It also includes behavioral insight (observability) into the networked microservices which are onboarded onto the service mesh.
-
 === Solution overview
 
-In this module you will onboard  `travel-agency` to {ossm}. The service mesh then adds a transparent layer on the existing applications without requiring any changes to the application code. 
 
-Service Mesh introduces an easy way to set up service-to-service authentication, complex operational functions such canary releases and telemetry to understand traffic between services. OpenShift Service Mesh 3.0 uses Istio as its core service mesh implementation and includes Kiali as its observability and management console.
+{corp} leverage {rhossm} as an easy way to set up service-to-service authentication, complex operational functions such canary releases and telemetry to understand traffic between services. 
 
-
-//  with a unified solution to manage, observe, and secure the east-west traffic of the services. It enables consistent traffic control, real-time visibility, and zero-trust security policies — all without requiring changes to the application code. With capabilities like canary deployments, {corp} can introduce new features more safely and confidently, accelerating delivery while minimizing disruption.
+{rhossm} uses https://istio.io/[Istio^] as its core service mesh implementation and includes https://kiali.io/[Kiali^] to help you to configure, visualize, validate and troubleshoot your mesh! 
 
 image:m2/m2-arch.png[] 
+
+In this module, you will onboard *travel-agency* namespace to the mesh. The service mesh adds a transparent layer to the microservices within this namespace without requiring any application code changes. 
+
+Once the namespace is part of the service mesh, you will  use the Kiali to visualize service traffic and gain observability into your application.
 
 
 == Technical considerations
 
 To successfully implement {rhossm}, there are a few key technical factors to consider:
 
-* *Namespace and Workload Configuration*: Ensure workloads are deployed in namespaces configured for mesh participation, with sidecar injection enabled (either automatic or manual).
+* *Namespace and Workload Configuration*: Ensure workloads are deployed in namespaces configured for mesh participation, with sidecar injection enabled.
 
 * *mTLS and Identity*: {rhossm} uses mutual TLS (mTLS) to authenticate and encrypt service-to-service traffic. Proper certificate management and identity policies are essential.
 

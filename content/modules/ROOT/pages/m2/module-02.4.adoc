@@ -134,6 +134,7 @@ Through hands-on activities, we:
 
 These capabilities empower {corp} to innovate faster, deploy with confidence, and maintain high standards of security and reliability across its application landscape.
 
+Istio's “sidecar-less” ambient mode is now available for developer preview - which meansa future where sidecars are optional. Check out https://istio.io/latest/docs/ambient/overview/[this page^] for more details
 
 == Clean up
 
