@@ -10,7 +10,7 @@ In this exercise, we'll use the operator on the OpenShift cluster and the comman
 
 
 
-=== Verify inaccessibiliy of Database from Travels Service
+== Verify inaccessibiliy of Database from Travels Service
 
 . As a first step, verify whether the travels services has connectivity to the database. You will use the integrated terminal on the right to perform these checks as guided.
 
@@ -34,7 +34,7 @@ curl travels.travel-agency.svc.cluster.local:8000/travels/Prague && echo
 
 . You will receive a response `{"error":"Travel Quote for Prague not found"}` indicating that the database is not accessible, and the service is unable to get a travel quote for Prague. 
 
-=== Set up a {rhsi} Site
+== Set up a {rhsi} Site
 
 Let's set up the Virtual Application Network using {rhsi} in the subsequent steps to help the core services (on OpenShift) access the database on-premises.
 
@@ -78,7 +78,7 @@ image::m1/site_created.png[]
 +
 image::m1/deploy_console_rhsi.png[]
 
-=== Set up a {rhsi} Listener
+== Set up a {rhsi} Listener
 
 [.concept]
 .What is a Listener?
@@ -99,7 +99,7 @@ image::m1/listener_button.png[]
 +
 image::m1/listener_form.png[]
 
-=== Set up an Access Token
+== Set up an Access Token
 
 [.concept]
 .What is an Access Token?
