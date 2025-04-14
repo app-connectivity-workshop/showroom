@@ -15,7 +15,7 @@ image::intro/hl-arch.png[]
 However, the company faces several challenges typical of a hybrid cloud environment:
 
 * *Secure connectivity between cloud and on-premises systems*: During the transition, some critical databases remain on-premises. {corp} needs to securely connect its new cloud-based services to these legacy systems without exposing sensitive data.
-* *Granular access control in a distributed environment*: With services now spread across multiple environments, controlling who can access what—and under which conditions—is increasingly complex. The company requires fine-grained, policy-driven service-to-service access controls.
+* *Granular access control in a distributed environment*: With services now spread across multiple environments, controlling who can access what, and under which conditions, is increasingly complex. The company requires fine-grained, policy-driven service-to-service access controls.
 * *Secure access for third-party partners*: Core services must be accessible to trusted third-party partners. {corp} needs to expose these services securely, while protecting them from unauthorized access or misuse.
 
 Throughout this workshop, you will play the role of a platform engineer at {corp}, and occasionally that of a developer, and work through these challenges using Red Hat's connectivity solutions.
@@ -25,12 +25,16 @@ Throughout this workshop, you will play the role of a platform engineer at {corp
 This workshop is divided into 3 logical sections which provide a guided walkthrough shadowing {corp}'s journey
 
 * *Module 1*: Explore how *{rhsi}* allows the core services on OpenShift to to communicate with the database seamlessly thereby enabling app connectivity across on-prem and cloud.
-* *Module 2*: Learn how to connect, manage, observe the apps with *{rhossm}* through fine-grained access control between ervices, traffic management strategies and observability.
-* *Module 3:* Manage and secure traffic flow with *{rhcl}* through rich policy APIs to secure access to core services from third-party partners.
+
+* *Module 2*: Learn how to manage microservices with *{rhossm}* through fine-grained access control between services, _east-west_[.red]^*^ traffic management strategies and observability.
+
+* *Module 3:* Learn *{rhcl}* helps you to manage and secure _north-south_[.red]^*^ request traffic flow with   through rich policy APIs to secure access to core services from third-party partners.
+
+TIP: [.red]^*^ In application connectivity, _east-west_ traffic refers to data flow between internal components/microservices, and  _north-south_ traffic refers to data flow between internal systems and external clients.
 
 image:intro/choose-module.png[] 
 
-Working through the 3 modules:
+=== Working through the 3 modules:
 
 * *Module 1* is mandatory and must be completed first.
 * You can then choose to proceed with *Module 2* or *Module 3* based on your interest.
