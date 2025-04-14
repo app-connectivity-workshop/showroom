@@ -14,7 +14,7 @@ In this exercise, we'll use the operator on the OpenShift cluster and the comman
 
 . As a first step, verify whether the travels services has connectivity to the database. You will use the integrated terminal on the right to perform these checks as guided.
 
-. In the *upper terminal*, log in to the OpenShift cluster using the command below. Click the clipboard icon image:common/clipboard.png[width=6%] to copy.
+. In the *upper terminal*, log in to the OpenShift cluster using the command below. Click the clipboard icon image:common/clipboard.png[width=30px] to copy.
 +
 [source,sh,role="execute",subs=attributes+]
 ----
