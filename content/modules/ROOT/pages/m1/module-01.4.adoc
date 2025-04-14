@@ -15,12 +15,13 @@ curl travels.travel-agency.svc.cluster.local:8000/travels/Prague | jq
 . You should see a response with cars, hotels, flights, and insurances returned from the database indicating that the services are able to access the database.
 +
 image:m1/travel-agency-response.png[] 
-. Return to the https://skupper-network-observer-travel-db.{ocp_cluster_openshift_cluster_ingress_domain}/[Service Interconnect Network Console, window="network-console"] and refresh the browser tab. Check if the RHEL machine is now part of the Virtual Application Network.
+
+== Optional: Explore Network Console
+
+. Return to the https://skupper-network-observer-travel-db.{ocp_cluster_openshift_cluster_ingress_domain}/[Service Interconnect Network Console, window="network-console"] and refresh the browser tab. Verify that the RHEL machine is now part of the Virtual Application Network.
 +
 image::m1/complete_console.png[]
 
-
-== Optional: Exploring Network Console
 . Feel free to check the different options in the Service Interconnect Network Console such as Services, Sites, Components, and Processes to get a better understanding of the Virtual Application Network and some traffic related analytics. 
 
 == Next steps for {corp}
