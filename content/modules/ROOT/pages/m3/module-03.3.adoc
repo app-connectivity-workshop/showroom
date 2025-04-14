@@ -69,32 +69,25 @@ image::m3/pe-dashboard-requests.png[]
 +
 image::m3/biz-dashboard-with-data.png[]
 
+
 == Summary
 
 With this setup, {corp} is all set to onboard further service endpoints to be accessed securely. This solution can be further extended to span across a multi-cluster setup, too.
 
-We will also extend this pattern to include all the important aspects of observability.
+// optional modules section
+// You can now proceed to *Module 2* if you haven't completed that yet, or to the *Workshop Summary*
+
+// * xref:../m2/module-02.0.adoc[Module 2] - Secure microservices access control with Red Hat OpenShift Service Mesh
+// * xref:../conclusion/summary.0.adoc[Workshop Summary]
 
 
+// ++++
 
-== Clean up
+// <style> 
 
-. Close all the tabs except for this *instructions* tab 
+// .next {
+//     display: none !important;
+// }
+// </style>
 
-
-You can now proceed to *Module 2* if you haven't completed that yet, or to the *Workshop Summary*
-
-* xref:../m2/module-02.0.adoc[Module 2] - Secure microservices access control with Red Hat OpenShift Service Mesh
-* xref:../conclusion/summary.0.adoc[Workshop Summary]
-
-
-++++
-
-<style> 
-
-.next {
-    display: none !important;
-}
-</style>
-
-++++
+// ++++

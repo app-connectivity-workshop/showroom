@@ -36,7 +36,11 @@ image:m2/kiali-workloads-travel.png[]
 +
 image:m2/kiali-workloads-overview.png[Overview]
 
-=== Optional Activity: Detailed workload exploration
+
+.[underline]#Optional Activity: Detailed metrics exploration#
+
+[%collapsible]
+====
 
 . *Traffic tab* visualizes inbound and outbound traffic for the selected workload, showing real-time request rates, response codes, and latencies. 
 +
@@ -47,6 +51,8 @@ image:m2/kiali-workloads-traffic.png[Traffic]
 image:m2/kiali-workloads-inbound.png[Inbound Metrics]
 
 . Feel free to explore *Logs*, *Outbound Metrics*, *Envoy*, *Services*, *Istio Config*, and *Mesh* tabs as well.
+
+====
 
 == Summary
 

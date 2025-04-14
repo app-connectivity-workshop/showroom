@@ -48,20 +48,12 @@ Connection to rhel.l64pg-1.sandbox3928.opentlc.com closed.
 
 == Summary
 
-Congratulations! You have successfully learnt how to use {rhsi} to securely bridge on-prem and cloud workloads with minimal time and complexity. 
+Congratulations! You have successfully learnt how to use {rhsi} to securely bridge on-prem and cloud workloads with minimal time and complexity. Proceed to the next module to learn how to secure the communication between your microservices with {rhossm}.
 
-You can now proceed to either of the following modules
+// optional modules section
+// You can now proceed to either of the following modules
 
-* xref:../m2/module-02.0.adoc[Module 2] - Secure microservices access control with Red Hat OpenShift Service Mesh
-* xref:../m3/module-03.0.adoc[Module 3] - Simplify and secure traffic management with Red Hat Connectivity Link
+// * xref:../m2/module-02.0.adoc[Module 2] - Secure microservices access control with Red Hat OpenShift Service Mesh
+// * xref:../m3/module-03.0.adoc[Module 3] - Simplify and secure traffic management with Red Hat Connectivity Link
 
-++++
 
-<style> 
-
-.next {
-    display: none !important;
-}
-</style>
-
-++++
