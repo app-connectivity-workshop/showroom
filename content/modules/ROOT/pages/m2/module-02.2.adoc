@@ -6,32 +6,18 @@ include::../style.adoc[]
 
 {m2}
 
-The micoservices within the `travel-agency` are able to communicate freely. While this simplifies development early on, it doesn't align with security best practices, especially when some services handle sensitive logic or customer data. One of the services - the `discounts` service -  is responsible for calculating and applying pricing discounts based on proprietary business rules. Access to this service must be tightly controlled.
+The microservices in the `travel-agency` namespace can currently communicate freely. While this makes development cycle easier, it poses security risks especially for services like `discounts` which applies proprietary pricing logic and handles sensitive data.
 
-Currently, any service in the `travel-agency` namespace, including frontend aggregators like `travels`, can communicate with the `discounts` service. However, only specific backend services—`cars`, `flights`, `hotels`, and `insurances`- should be allowed to call `discounts`.
+image:m2/travel-agency-namespace-initial.png[width=70%] 
 
+As it stands, all the services in the namespace, including the `travels-agency` REST API, can access `discounts`. However, only the backend services `cars`, `flights`, `hotels`, and `insurances` should be permitted to do so.
 
-Currently, any service in the `travel-agency` namespace—including frontend aggregators like `travels`—can communicate with the `discounts` service.
-
-However, only specific backend services—`cars`, `flights`, `hotels`, and `insurances`—should be allowed to call `discounts`.
-
-
-In this lab, you'll apply an `AuthorizationPolicy` to restrict access to the `discounts` service, enforcing a least privilege model. This will help you gain hands-on experience with Istio authorization policies in {rhossm} and reinforce important concepts around microservice security and service-to-service communication control.
-
-+
-[.concept]
-.What is an `AuthorizationPolicy`?
-****
-An Istio Authorization Policy enables access control on workloads in the mesh. 
-****
+In this section, you'll apply an *Istio AuthorizationPolicy*, that enables access control on workloads in the mesh, to restrict access to the `discounts` service, enforcing a least privilege model
 
 
-== Calling the *discounts* service directly from the *travels* service
+== Verify direct access of *discounts* service
 
-At this point in the module, you are able to call the `discounts` service directly from `travels`. 
-
-To test this, run the following command in a terminal:
-
+. Run the following command in the *upper teminal* to verify that you are indeed able to access the `discounts` service directly from `travels` pod.
 +
 [source,sh,role="execute",subs=attributes+]
 ----

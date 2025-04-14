@@ -22,8 +22,9 @@ In the module, you will be guided through setting up a Virtual Application Netwo
 
 With {rhsi}, the core microservices (on OpenShift) can connect with `travels-db` (on RHEL) as though the database was a local service wihtin OpenShift.
 
-image:m1/rhsi_architecture_image.png[]
+// image:m1/rhsi_architecture_image.png[]
 
+image:m1/m1-arch.png[] 
 
 == Activities overview:
 
