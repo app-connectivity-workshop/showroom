@@ -1,7 +1,7 @@
 ---
 site:
   title: Safeguarding Application Connectivity for the Hybrid Cloud
-  url: https://redhat-scholars.github.io/course-template
+  url: #
   start_page: modules::index.adoc
 
 content:
