@@ -15,32 +15,24 @@ In this section, you'll apply an Istio `AuthorizationPolicy` to enforce a least 
 
 == Review current access of *discounts* service
 
-. Run the following command in the *upper teminal* to verify that you are indeed able to access the `discounts` service directly from `travels` REST API pod. +
-This command calls the `discounts` services directly from the `travels` pod. 
+. Run the following command in the *upper teminal* to verify that you are indeed able to access the `discounts` service directly from the other services in the `travel-agency` name space. +
+This command calls the `discounts` services directly from the  pods of the services. 
 +
 [source,sh,role="execute",subs=attributes+]
 ----
 oc rsh -n travel-agency $(oc get pod -l app=travels -n travel-agency -o jsonpath='{.items[0].metadata.name}') \
   curl http://discounts.travel-agency.svc.cluster.local:8000/discounts/hello-from-travels
-----
-. The output verifies access of `discounts` service directly from `travels`.
-+
-```
-{"user":"hello-from-travels","discount":0.05}
-```
-. Execute the following commands in the *upper terminal* to test connectivity from the other services such as `cars` and `hotels` as well by.
-+
-[source,sh,role="execute",subs=attributes+]
-----
+
 oc rsh -n travel-agency $(oc get pod -l app=cars -n travel-agency -o jsonpath='{.items[0].metadata.name}') \
   curl http://discounts.travel-agency.svc.cluster.local:8000/discounts/hello-from-cars
 
 oc rsh -n travel-agency $(oc get pod -l app=hotels -n travel-agency -o jsonpath='{.items[0].metadata.name}') \
   curl http://discounts.travel-agency.svc.cluster.local:8000/discounts/hello-from-hotels
 ----
+. The output verifies access of `discounts` service directly from `travels`, `cars` and `hotels`.
 +
-Output:
 ```
+{"user":"hello-from-travels","discount":0.05}
 {"user":"hello-from-cars","discount":0.05}
 {"user":"hello-from-hotels","discount":0.05}
 ```
@@ -89,7 +81,7 @@ The `discount-access-sa` service account has already created and added to the al
 
 == Test the *AuthorizationPolicy* 
 
-. Run the following command in the *upper terminal* to verify  `travels` REST API _cannnot_ access the `discounts` service.
+. Run the following command in the *upper terminal* to ensure the `travels` REST API _cannnot_ access the `discounts` service.
 +
 [source,sh,role="execute",subs=attributes+]
 ----
@@ -98,12 +90,12 @@ oc rsh -n travel-agency $(oc get pod -l app=travels -n travel-agency -o jsonpath
 
 echo
 ----
-. You can no longer access `discounts` and instead get the response.
+. You should no longer be able to access `discounts` service and instead get an `access denied` response.
 +
 ```
 RBAC: access denied
 ```
-. Verify that the right services within the `travel-agency` namespace can still access the `discounts` service by running the following commands in the *upper terminal*.
+. Verify that the right services (`cars` and `hotels`) can still access the `discounts` service by running the following commands in the *upper terminal*.
 +
 [source,sh,role="execute",subs=attributes+]
 ----
