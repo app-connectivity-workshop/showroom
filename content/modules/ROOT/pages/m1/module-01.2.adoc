@@ -1,7 +1,7 @@
 :imagesdir: ../../assets/images
 include::../style.adoc[]
 
-== Activity: Set up {rshi} on RHEL
+== Activity: Set up {rhsi} on RHEL
 Similar to the OpenShift site, you will set up the site and routers on RHEL using the {rhsi} command line interface.
 
 === Login in to RHEL and validate the enviroment
