@@ -2,6 +2,8 @@
 include::../style.adoc[]
 
 == Activity: Set up {rhsi} on RHEL
+{m1}
+
 Similar to the OpenShift site, you will set up the site and routers on RHEL using the {rhsi} command line interface.
 
 === Login in to RHEL and validate the enviroment

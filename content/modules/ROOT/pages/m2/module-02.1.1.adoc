@@ -2,6 +2,7 @@
 include::../style.adoc[]
 
 == Activity: Explore Service Mesh with Kiali
+{m2}
 
 Kiali offers a number of ways to examine the micoservices which are managed by {rhossm}. This helps users to quickly evaluate the health of their service architecture.
 
@@ -31,7 +32,7 @@ image:m2/kiali-workloads-travel.png[]
 
 . Select the `travels-v1` workload to review the various metrics available.
 
-. *Overview tab* gives a high-level summary of the selected workload, including its health status, traffic metrics, associated services, and configuration details. It helps you quickly assess how a workload performs and interacts within the mesh.
+. The *Overview tab* gives a high-level summary of the selected workload, including its health status and traffic metrics. It helps you quickly assess how a workload performs and interacts within the mesh.
 +
 image:m2/kiali-workloads-overview.png[Overview]
 

@@ -1,9 +1,10 @@
 :imagesdir: ../../assets/images
 include::../style.adoc[]
 
-== Module 2: Secure microservices access control with {rhossm}
 
 == Activity: Implementing Least Privilege with Authorization Policies
+
+{m2}
 
 In a typical microservices environment, especially within a service mesh like {rhossm}, it's common for services in the same namespace to communicate freely. While this simplifies development early on, it doesn't align with security best practices, especially when some services handle sensitive logic or customer data.
 

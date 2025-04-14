@@ -1,11 +1,9 @@
 :imagesdir: ../../assets/images
 include::../style.adoc[]
 
-== Module 3: Simplify and secure traffic management with {rhcl}
-
-Now that the Platform Engineer has made the Gateway available, Developers/App Owners can now configure secure access to their service endpoints.
-
 == Activity: Developer workflow
+{m3}
+Now that the Platform Engineer has made the Gateway available, Developers/App Owners can now configure secure access to their service endpoints.
 
 In this section, you will perform the role of a developer and create policies to securely expose the core service endpoints. This will allow partner portals to securely access {corp}'s flights, hotels, and car offerings.
 

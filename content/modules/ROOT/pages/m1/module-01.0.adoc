@@ -2,6 +2,7 @@
 include::../style.adoc[]
 
 == Module 1: Connect applications across on-prem and cloud with {rhsi}
+{m1}
 
 {corp} is transitioning from a monolithic application to microservices using Red Hat OpenShift, while keeping their core database on-premises due to regulatory requirements. 
 

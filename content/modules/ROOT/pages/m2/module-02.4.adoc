@@ -1,9 +1,8 @@
 :imagesdir: ../../assets/images
 include::../style.adoc[]
 
-== Module 2: Secure microservices access control with {rhossm}
-
 == Activity: Canary Rollout
+{m2}
 
 === Set Kiali Display Options
 

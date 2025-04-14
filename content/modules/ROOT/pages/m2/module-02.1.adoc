@@ -2,6 +2,7 @@
 include::../style.adoc[]
 
 == Activity: Enable OpenShift Service Mesh 
+{m2}
 
 {rhossm} have been installed and configured in your cluster. You will now onboard `travel-agency` namespace to be managed by {rhossm}
 

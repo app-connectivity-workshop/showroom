@@ -2,6 +2,7 @@
 include::../style.adoc[]
 
 == Activity: Verify database access from services
+{m1}
 
 You are now ready to  verify if the travels services is now able to access the database. The travesls services have already been configured to to connnect to the {rhsi} Listener on OpenShift, which serves as a virtual endpoint for the actual on-premises database.
 

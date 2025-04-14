@@ -2,6 +2,7 @@
 include::../style.adoc[]
 
 == Module 2: Secure microservices access control with {rhossm}
+{m2}
 
 {corp}'s move to a microservices-based architecture brings greater agility, but also results in increased complexity in managing how the microservices communicate with each other and stay secure. 
 

@@ -2,6 +2,8 @@
 include::../style.adoc[]
 
 == Activity: Set up {rhsi} on OpenShift
+{m1}
+
 You can set up Virtual Application Networks with {rhsi} by either using the command line interface or the OpenShift operator. 
 
 In this exercise, we'll use the operator on the OpenShift cluster and the command line interface on the RHEL side just to explore both options. You could also use automation tools such as Ansible to automate the creation of the Virtual Application Network on both sides.

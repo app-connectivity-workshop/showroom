@@ -1,9 +1,8 @@
 :imagesdir: ../../assets/images
 include::../style.adoc[]
 
-
-
 == Module 3: Simplify and secure traffic management with {rhcl}
+{m3}
 
 With their growing popularity, {corp} would like to add new channels to their existing portals. They plan to onboard travel partners, that require secure access to their flights, cars and hotel offerings.
 
