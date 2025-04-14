@@ -19,7 +19,7 @@ image:m3/m3-soln.png[]
 
 {rhcl} provides Kubernetes-native traffic management in multi-cluster environments. It builds on *Gateway API* (the new Kubernetes standard for Ingress), offering Policy APIs to support DNS management, TLS certificate lifecycle management, authentication, and rate limiting in multi-cluster environments. 
 
-{rhcl}'s policies are applied on the Gateway and HTTPRoute resources as shown below. 
+{rhcl}'s policies are applied on the Gateway and HTTPRoute resources (of Gateway API) as shown below. 
 
 image:m3/rhcl-policies.png[] 
 
