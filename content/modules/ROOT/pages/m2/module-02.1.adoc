@@ -90,8 +90,11 @@ Onboarding a namespace to the mesh can be done manually by editing/patching labe
 
 In this module, you will use the Kiali consle to enable automatic Istio injection to the namespace. Service mesh will then automatically inject proxy sidecar containers into all pods in `travel-agency` namespace that will allow the service mesh to take manage them.
 
-. Navigate to http://kiali-istio-system.{ocp_cluster_openshift_cluster_ingress_domain}/?namespace=travel-agency&opLabel=or[Kiali console, window="kiali"], and log in with username `admin` and password `{ocp_cluster_openshift_cluster_admin_password}` when prompted.
-. You should automatically see a filtered view of the `travel-agency` namespace. If not, enter `travel-agency`  into the *Namespace* filter, and press *Enter* to make it easier to perform actions.
+. Navigate to http://kiali-istio-system.{ocp_cluster_openshift_cluster_ingress_domain}[Kiali console, window="kiali"], and log in with username `admin` and password `{ocp_cluster_openshift_cluster_admin_password}` when prompted.
++
+image:m2/kiali-overview.png[]
+
+. Enter `travel-agency` into the *Namespace* filter, and press *Enter* to make it easier to perform actions.
 +
 image:m2/namespace-filter.png[] 
 
