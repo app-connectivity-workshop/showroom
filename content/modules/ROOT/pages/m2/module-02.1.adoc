@@ -112,7 +112,7 @@ image:m2/kiali-enabled-confirmation.png[]
 
 === Validate auto-injection to `travel-agency`
 
-. In the http://kiali-istio-system.{ocp_cluster_openshift_cluster_ingress_domain}/console/overview?duration=60&refresh=60000&namespace=travel-agency&opLabel=or[Kiali console], click on the *labels* link of the `travel-agency` card
+. In the http://kiali-istio-system.{ocp_cluster_openshift_cluster_ingress_domain}/console/overview?duration=60&refresh=60000&namespace=travel-agency&opLabel=or[Kiali console^, window="kiali"], click on the *labels* link of the `travel-agency` card
 +
 image:m2/travel-agency-card-7labels.png[] 
 . You should now see the new label `istio-injection=enabled`. 
