@@ -110,7 +110,7 @@ Output:
 {"user":"hello-from-flights","discount":0.05}
 ```
 
-== Summary: Implementing Least Privilege with Authorization Policies
+== Summary: 
 
 In this section, you applied an Istio `AuthorizationPolicy`  to secure service-to-service communication within the `travel-agency` namespace to demonstrate how {rhossm} allow you to enforce fine-grained access control using a simple, declarative policy model. 
 

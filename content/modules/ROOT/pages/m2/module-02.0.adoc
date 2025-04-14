@@ -6,13 +6,9 @@ include::../style.adoc[]
 
 {corp}'s move to a microservices-based architecture brings greater agility, but also results in increased complexity in managing how the microservices communicate with each other and stay secure. 
 
-{corp} wants apply access policies to the interaction between microservices, enable deployment strategies such as Canary Deployment, and  monitor the microservices applications.
-
-NOTE: Canary deployment is a strategy where a new version (the canary) is tested before all of the old instances are replaced
-
+{corp} wants apply access policies to the interaction between microservices, enable complex deployment strategies, and  monitor the microservices applications.
 
 === Solution overview
-
 
 {corp} leverage {rhossm} as an easy way to set up service-to-service authentication, complex operational functions such canary releases and telemetry to understand traffic between services. 
 
