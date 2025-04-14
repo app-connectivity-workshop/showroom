@@ -104,47 +104,26 @@ image:m2/kiali-enable-injection.png[]
 . Confirm by clicking the *Enable* button.
 +
 image:m2/kiali-enable-injection-button.png[]
-. This action adds `travel-agency` namespace to the mesh, and also set the namespace's Istio label to `istio-injection=enabled`
+. You are notified that the namespace has been updated.
+This action adds `travel-agency` namespace to the mesh, and also set the namespace's Istio label to `istio-injection=enabled`. Y
++
+image:m2/kiali-enabled-confirmation.png[] 
+
 
 === Validate auto-injection to `travel-agency`
 
-Let's  another look at the `travel-agency` namespace to verify the update
-. From the *upper terminal*, execute the following command once more.
+. In the http://kiali-istio-system.{ocp_cluster_openshift_cluster_ingress_domain}/console/overview?duration=60&refresh=60000&namespace=travel-agency&opLabel=or[Kiali console], click on the *labels* link of the `travel-agency` card
 +
-[source,sh,role="execute",subs=attributes+]
-----
-oc describe namespaces travel-agency
-----
+image:m2/travel-agency-card-7labels.png[] 
+. You should now see the new label `istio-injection=enabled`. 
 +
-Example output:
-+
-```
-oc describe namespaces travel-agency
-Name:         travel-agency
-Labels:       app.kubernetes.io/instance=travel-agency
-              istio-injection=enabled
-              kubernetes.io/metadata.name=travel-agency
-              ....
-              pod-security.kubernetes.io/warn-version=latest
-Annotations:  openshift.io/sa.scc.mcs: s0:c29,c19
-              ....
-Status:       Active
-...
+image:m2/travel-agency-istioenabled.png[] 
 
-```
-. You should now see: `istio-injection=enabled`. 
-+
-[.concept]
-.What does the istio-injection=enabled do?
-****
-When you set the `istio-injection=enabled` label on a namespace, any new pods that are created in that namespace will automatically have a sidecar added to them.
-****
+=== Restarting deployments to trigger sidecar
 
-=== Restarting Deployments
+With auto-injection enabled, you must restart the application pods to trigger sidecar injection.
 
-With injection enabled, we must restart the application pods to trigger sidecar injection.
-
-. Since you have two terminals, in the *upper terminal*, run the following command. This will automatically run the `oc get pods` command every two seconds.
+. In the *upper terminal*, run the following command. This will automatically run the `oc get pods` command every two seconds.
 +
 [source,sh,role="execute",subs=attributes+]
 ----
@@ -167,7 +146,7 @@ deployment.apps/cars-v1 restarted
 deployment.apps/travels-v1 restarted
 ```
 
-. Once the applications have been restarted, the *lower terminal* will show that there are now 2 containers per pod.
+. Once the applications have been restarted, the *upper terminal* will show that there are now 2 containers per pod, one of the being the Istio side car that has been auto-injected.
 +
 
 ```
@@ -180,5 +159,4 @@ insurances-v1-5fc4b7cdf6-khkl5   2/2     Running   0          76s
 mysqldb-v1-644c48c745-qq9ps      2/2     Running   0          76s
 travels-v1-99798fc94-2xw74       2/2     Running   0          75s
 ```
-
-You can now stop the `watch` command in the upper terminal with `Ctrl+C`
+. You can now stop the `watch` command in the *upper terminal* with `Ctrl+C`
