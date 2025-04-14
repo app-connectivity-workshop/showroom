@@ -2,10 +2,10 @@
 ** xref:intro/intro.0.adoc[The story behind this workshop]
 
 * xref:m1/module-01.0.adoc[Connect apps across hybrid cloud]
-** xref:m1/module-01.1.adoc[Setting up the site on OpenShift]
-** xref:m1/module-01.2.adoc[Setting up the site on RHEL]
-** xref:m1/module-01.3.adoc[Transferring secure token to RHEL]
-** xref:m1/module-01.4.adoc[Update the environment variables to access the database]
+** xref:m1/module-01.1.adoc[Set up {rshi} on OpenShift]
+** xref:m1/module-01.2.adoc[Set up {rshi} on RHEL]
+** xref:m1/module-01.3.adoc[Complete the access configuration]
+** xref:m1/module-01.4.adoc[Verify database access from services]
 
 
 * xref:m2/module-02.0.adoc[Secure microservices access control]
