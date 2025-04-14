@@ -28,21 +28,22 @@ image::m1/complete_console.png[]
 If and when {corp} decides to add a database replica to a different environment or cluster, they can simply add it to the existing Virtual Application Network and link it to the same listener on OpenShift. Red Hat Service Interconnect will automatically handle failover and load balancing between the database instances.
 
 
-== Cleanup
+== Clean up
 . Log out of the **RHEL machine** (lower terminal) using the following command.
 +
 [source,sh,role="execute",subs=attributes+]
 ----
 exit
 ----
-
-. Output:
++
+Output:
 +
 [source,sh]
 ----
 logout
 Connection to rhel.l64pg-1.sandbox3928.opentlc.com closed.
 ----
+. Close all the tabs except for this *instructions* tab 
 
 == Summary
 

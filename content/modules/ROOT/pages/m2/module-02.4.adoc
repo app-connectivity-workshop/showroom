@@ -115,7 +115,6 @@ oc -n travel-agency patch virtualservice discounts --type=json -p='[
 
 Press `Ctrl+C` to stop the log output in the upper terminal.
 
-
 === Summary
 
 You've just performed a progressive rollout of a new version of a microservice using weighted routing in OpenShift Service Mesh. This powerful technique enables you to test updates incrementally, observe behavior, and reduce the risk of pushing changes to production.
@@ -135,3 +134,24 @@ Through hands-on activities, we:
 
 These capabilities empower {corp} to innovate faster, deploy with confidence, and maintain high standards of security and reliability across its application landscape.
 
+
+== Clean up
+
+. Close all the tabs except for this *instructions* tab 
+
+
+You can now proceed to *Module 3* if you haven't completed that yet, or to the *Workshop Summary*
+
+* xref:../m3/module-03.0.adoc[Module 3] - Simplify and secure traffic management with Red Hat Connectivity Link
+* xref:../conclusion/summary.0.adoc[Workshop Summary]
+
+++++
+
+<style> 
+
+.next {
+    display: none !important;
+}
+</style>
+
+++++
