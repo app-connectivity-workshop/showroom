@@ -65,6 +65,7 @@ virtualservice.networking.istio.io/discounts patched
 virtualservice.networking.istio.io/discounts patched
 0% traffic routed to v1, 100% to v2
 ```
+. Press `Ctrl+C` to stop the log output in the *upper terminal*.
 
 Congratulations! You've just performed a progressive rollout of a new version of a microservice using weighted routing in OpenShift Service Mesh. 
 
@@ -80,8 +81,6 @@ oc -n travel-agency patch virtualservice discounts --type=json -p='[
   {"op": "replace", "path": "/spec/http/0/route/1/weight", "value": 0}
 ]'
 ----
-
-Press `Ctrl+C` to stop the log output in the upper terminal.
 ====
 
 
