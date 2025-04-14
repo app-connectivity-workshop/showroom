@@ -1,31 +1,26 @@
 :imagesdir: ../../assets/images
 include::../style.adoc[]
 
-== Module 2: Secure microservices access control with {rhossm}
+== Activity: Enable OpenShift Service Mesh 
 
-== Activity: Enabling OpenShift Service Mesh
-
-The {rhossm} and Kiali operators have been installed and configured in your cluster along with monitoring for observability.
-
-In this section, we'll make changes to the *travel-agency* namespace so the travel portal can take full advantage of {rhossm}. We'll do this by enabling Istio sidecar proxy injection.
+{rhossm} have been installed and configured in your cluster. 
+In this section, you will make changes to the *travel-agency* namespace so the travel portal can take full advantage of {rhossm} by enabling Istio sidecar proxy injection.
 
 By default, {rhossm} has visibility into all namespaces in the cluster. However, to actively manage Istio policies between services, we need to explicitly inject the service mesh sidecar proxies by setting annotations on the namespace resource. This can be done manually by editing/patching labels in the `travel-agency` namespace, or by using the Kiali console, which is the method we will use in the lab module.
 
 Once the application is part of the service mesh, you can also use the Red Hat-provided Kiali Operator to visualize service traffic and gain observability into your application.
 
-== Presetup
+== Set up your workshop environment
 
-== Log in to the terminals
+You will need to access the OpenShift console and command line terminals to apply configurations.
 
-You will need to access the web console and command line terminals to apply configurations.
-
-. Before starting this module, please make sure you have exited the RHEL server from the previous module. In the lower terminal, type `exit` to exit out of the RHEL system.
+. Make sure you have exited the RHEL server from the previous module. If needed, type `exit` in the lower terminal to exit out of the RHEL system.
 +
 [source,sh,role="execute",subs=attributes+]
 ----
 exit
 ----
-. Clear the output in both terminals.
+. Clear the output in both terminals to make it easier to work on the next steps.
 +
 [source,sh,role="execute",subs=attributes+]
 ----
@@ -37,67 +32,26 @@ clear
 ----
 oc login -u admin -p {ocp_cluster_openshift_cluster_admin_password} https://172.30.0.1:443
 ----
-. Type `y` if your are prompted with *Use insecure connections? (y/n):*
-. You should see a `Login successful.` message
-. We will be working primarily in the `travel-agency` namespace/project, so run the following command to ensure the next steps are applied to it.
-+
-[source,sh,role="execute",subs=attributes+]
-----
-oc project travel-agency
-----
-+
-Expected output:
-+
-```bash
-[lab-user: ~]$ oc project travel-agency
+.. Type `y` if your are prompted with `Use insecure connections? (y/n)`
+.. You should see a `Login successful` message
 
-Now using project "travel-agency" on server "https://172.30.0.1:443".
-```
+// . We will be working primarily in the `travel-agency` namespace/project, so run the following command in one of the terminals to ensure the next steps are applied to it.
+// +
+// [source,sh,role="execute",subs=attributes+]
+// ----
+// oc project travel-agency
+// ----
+// +
+// Expected output:
+// +
+// ```bash
+// Now using project "travel-agency" on server "https://172.30.0.1:443".
+// ```
 
-== Log into the OpenShift Web Console (GUI)
-You will need to access the OpenShift Web Console for some of the exercises. 
 
-. Navigate to the {ocp_cluster_openshift_cluster_console_url}[OpenShift Console, window="console"], and log in with username `admin` and password `{ocp_cluster_openshift_cluster_admin_password}`if prompted.
+== Enable Service Mesh for the `travel-agency` namespace
 
-. You can also run the following command from the terminal to get the URL in either terminal.
-
-+
-[source,sh,role="execute",subs=attributes+]
-----
-oc whoami --show-console
-----
-+
-Example output:
-+
-```bash
-oc whoami --show-console
-https://console-openshift-console.apps.[domain].opentlc.com
-
-```
-
-== Log into the Kiali Web Console (GUI)
-
-. Navigate to the Kiali console in a new tab:
-
-* http://kiali-istio-system.{ocp_cluster_openshift_cluster_ingress_domain}[Link to Kiali console, window="kiali"] 
-
-. You can click the link above to access the Kiali console, but if needed, to get the URL to the Kiali console via the command line, run the following command in either terminal on the right:
-+
-[source,sh,role="execute",subs=attributes+]
-----
-echo "http://$(oc get route kiali -n istio-system -o jsonpath='{.spec.host}')"
-----
-
-Example Output:
-
-```bash
-[lab-user: ~]$ echo "http://$(oc get route kiali -n istio-system -o jsonpath='{.spec.host}')"
-http://kiali-istio-system.apps.cluster-[domain].opentlc.com
-```
-
-== Enabling Service Mesh for the travel-agency namespace
-
-. Before enabling Istio sidecar proxy injection for the `travel-agency` namespace, let's take a look at all of the pods running within it by running the following command in the terminal:
+. Before enabling Istio sidecar proxy injection for the `travel-agency` namespace, let's review all the pods running within it. Run the following command in the *upper terminal*.
 +
 [source,sh,role="execute",subs=attributes+]
 ----
@@ -109,53 +63,38 @@ Example output:
 ----
 NAME                             READY   STATUS    RESTARTS   AGE
 cars-v1-d7b4b7cf-pm7nh           1/1     Running   0          113m
-discounts-v1-7cfd444876-wrxtc    1/1     Running   0          113m
-flights-v1-77bbc76cbd-kfghl      1/1     Running   0          112m
-hotels-v1-55556b6574-kcxv7       1/1     Running   0          112m
-insurances-v1-656cdb54f6-gcc2m   1/1     Running   0          112m
+....
 travels-v1-647d788486-wf4nm      1/1     Running   0          112m
 
 ----
-. Each pod shows `1/1` under `READY`, meaning each one has a single container and it's running.  
+. Each pod shows `1/1` under the `READY` column, indicating that each pod has a single container and it is running.  
 
-. Check the namespace `travel-agency` configuration:
+. Check the namespace `travel-agency` configuration.
 +
 [source,sh,role="execute",subs=attributes+]
 ----
 oc describe namespaces travel-agency
 ----
 +
-Example output:
-+
-----
-oc describe namespaces travel-agency
-Name:         travel-agency
-Labels:       app.kubernetes.io/instance=travel-agency
-              istio-injection=disabled
-              kubernetes.io/metadata.name=travel-agency
-              pod-security.kubernetes.io/audit=restricted
-              pod-security.kubernetes.io/audit-version=latest
-              pod-security.kubernetes.io/warn=restricted
-              pod-security.kubernetes.io/warn-version=latest
-Annotations:  openshift.io/sa.scc.mcs: s0:c29,c19
-              openshift.io/sa.scc.supplemental-groups: 1000850000/10000
-              openshift.io/sa.scc.uid-range: 1000850000/10000
-Status:       Active
-...
+image:m2/oc-travel-agency.png[] 
 
-----
 . Look for the label: `istio-injection=disabled`
 
 . Even though the mesh manages the namespace, sidecars have not yet been deployed. Let's change that by updating the label to `istio-injection=enabled`.
 +
 [NOTE]
 ====
-The label `istio-injection=disabled` might not be present in the deployment. If this label is missing, `istio-injection=disabled` is the implicit default value, and we can still proceed to the next step.
+The `istio-injection=disabled` label is the implicit default value and might always be present in the deployment. You can proceed to the next step even if it is not displayed.
 ====
 
 *Enabling Auto-Injection Using Kiali*
 
+Kiali is part of Red Hat OpenShift Service Mesh and is an observability console for Istio that helps you monitor the structure and health of your service mesh. It displays traffic flow, service relationships, and errors.
+
 image:m2/kiali-overview.png[]
+
+. Navigate to http://kiali-istio-system.{ocp_cluster_openshift_cluster_ingress_domain}[Kiali console, window="kiali"], , and log in with username `admin` and password `{ocp_cluster_openshift_cluster_admin_password}` when prompted.
+
 
 . In Kiali, go to the *Overview* tab, find the `travel-agency` tile, click the kabob menu (three dots), and choose *Enable Auto Injection*.
 +
@@ -200,36 +139,31 @@ When you set the `istio-injection=enabled` label on a namespace, any new pods th
 
 With injection enabled, we must restart the application pods to trigger sidecar injection.
 
-Since you have two terminals, in the upper terminal, run the command:
-
-
+. Since you have two terminals, in the *upper terminal*, run the following command. This will automatically run the `oc get pods` command every two seconds.
++
 [source,sh,role="execute",subs=attributes+]
 ----
 watch oc get pods -n travel-agency
 ----
 
-This will automatically run the `oc get pods` command every two seconds.
-
-In the lower terminal, run the command:
-
+. In the *lower terminal*, run the following command.
++
 [source,sh,role="execute",subs=attributes+]
 ----
 oc get deployments -n travel-agency -o name \
   | xargs -I{} oc rollout -n travel-agency restart {}
 ----
-
-Expected output on the lower terminal:
-
++
+Expected output on the lower terminal.
++
 ```
 deployment.apps/cars-v1 restarted
-deployment.apps/discounts-v1 restarted
-deployment.apps/flights-v1 restarted
-deployment.apps/hotels-v1 restarted
-deployment.apps/insurances-v1 restarted
+....
 deployment.apps/travels-v1 restarted
 ```
 
-Once the applications have been restarted, the above terminal will show that we now have 2 of 2 containers per pod:
+. Once the applications have been restarted, the *lower terminal* will show that there are now 2 containers per pod.
++
 
 ```
 NAME                             READY   STATUS    RESTARTS   AGE
