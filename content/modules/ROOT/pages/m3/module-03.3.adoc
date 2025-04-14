@@ -16,6 +16,7 @@ image:m3/grafana-openshift-login.png[width=60%]
 +
 image:m3/grafana-openshift-login-cred.png[width=60%]
 . Click *Allow selected permissions* button 
++
 image:m3/grafana-allow-permissions.png[link=self, window=blank, width=100%] 
 
 
