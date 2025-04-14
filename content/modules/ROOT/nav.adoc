@@ -2,8 +2,8 @@
 ** xref:intro/intro.0.adoc[The story behind this workshop]
 
 * xref:m1/module-01.0.adoc[Connect apps across hybrid cloud]
-** xref:m1/module-01.1.adoc[Set up {rshi} on OpenShift]
-** xref:m1/module-01.2.adoc[Set up {rshi} on RHEL]
+** xref:m1/module-01.1.adoc[Set up Red Hat Service Interconnect on OpenShift]
+** xref:m1/module-01.2.adoc[Set up Red Hat Service Interconnect on RHEL]
 ** xref:m1/module-01.3.adoc[Complete the access configuration]
 ** xref:m1/module-01.4.adoc[Verify database access from services]
 
