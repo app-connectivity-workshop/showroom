@@ -14,16 +14,14 @@ NOTE: This script is solely for the convenience of this workshop and isn't requi
 +
 [source,sh,role="execute",subs=attributes+]
 ----
-curl -s https://raw.githubusercontent.com/app-connectivity-workshop/scripts/refs/heads/main/m1/convert_grant_token.sh \
-    | bash > summit_token.yaml
+curl -s https://raw.githubusercontent.com/app-connectivity-workshop/scripts/refs/heads/main/m1/convert_grant_token.sh | bash > summit_token.yaml
 ----
 
 . In the *OpenShift terminal (upper terminal)*, run the following script to transfer the token file (from the previous step) to the RHEL machine.
 +
 [source,sh,role="execute",subs=attributes+]
 ----
-scp summit_token.yaml \
-    lab-user@{rhel_hostname}:/home/lab-user/.local/share/skupper/namespaces/default/input/resources/
+scp summit_token.yaml lab-user@{rhel_hostname}:/home/lab-user/.local/share/skupper/namespaces/default/input/resources/
 ----
 
 
